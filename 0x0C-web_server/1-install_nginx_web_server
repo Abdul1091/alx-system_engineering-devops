@@ -16,3 +16,6 @@ sudo ufw 'Nginx HTTP'
 # Reload nginx to apply changes (without using systemctl)
 sudo service nginx reload
 
+# Check Nginx status to ensure it is running
+sudo service nginx status
+
