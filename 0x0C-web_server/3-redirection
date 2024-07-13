@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Configures Nginx to redirect /redirect_me to another page
+
+# Update package lists and install Nginx if not installed
+apt-get update
+apt-get install -y nginx
+
+#From the previous project
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Add a redirection rule to the Nginx configuration
+sed -i '/server_name _;/a location /redirect_me {\n\treturn 301 https://www.github.com/Abdul1091;\n}' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+service nginx restart
