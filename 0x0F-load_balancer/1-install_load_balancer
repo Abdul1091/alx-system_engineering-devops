@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Create a script to install and configure HAProxy on lb-01 server
+# Configure HAProxy to send traffic to web-01 and web-02 servers
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAProxy can be managed via an init script
+
+# Install and configure HAproxy on the lb-01 server.
+sudo apt-get -y update
+apt-get -y install haproxy
+
+# edit config file
+server_config=\
+"
+frontend softbiochem_frontend
+        bind *:80
+        mode http
+        default_backend softbiochem_backend
+backend softbiochem_backend
+        balance roundrobin
+        server 176572-web-01 54.165.68.219:80 check
+        server 176572-web-02 34.202.164.117:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable haproxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Testing the HAproxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Restarting Nginx
+sudo service haproxy restart
