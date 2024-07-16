@@ -17,8 +17,8 @@ frontend softbiochem_frontend
         default_backend softbiochem_backend
 backend softbiochem_backend
         balance roundrobin
-        server 176572-web-01 54.165.68.219:80 check
-        server 176572-web-02 34.202.164.117:80 check
+        server 102699-web-01 54.165.68.219:80 check
+        server 102699-web-02 34.202.164.117:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
