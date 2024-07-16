@@ -44,8 +44,8 @@ frontend softbiochem_front_end
 backend softbiochem_back_end
     balance roundrobin
     
-    server 176572-web-01 54.165.68.219:80 check
-    server 176572-web-02 34.202.164.117:80  check
+    server 102699-web-01 54.165.68.219:80 check
+    server 102699-web-02 34.202.164.117:80  check
 
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:54321

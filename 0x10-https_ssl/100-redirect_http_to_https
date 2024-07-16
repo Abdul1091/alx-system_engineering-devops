@@ -47,5 +47,5 @@ frontend softbiochem-frontend-https
 
 backend softbiochem-backend
         balance roundrobin
-        server 481427-web-01 54.165.68.219:80 check
-        server 481427-web-02 34.202.164.117:80 check
+        server 102699-web-01 54.165.68.219:80 check
+        server 102699-web-02 34.202.164.117:80 check
