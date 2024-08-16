@@ -28,4 +28,4 @@
   2. Add automated tests to catch such errors in the future.
   3. Enhance monitoring to detect similar issues more quickly.
 
-![Strace is your friend]()
+![Strace is your friend](https://github.com/Abdul1091/alx-system_engineering-devops/blob/master/0x19-postmortem/bug.png)
