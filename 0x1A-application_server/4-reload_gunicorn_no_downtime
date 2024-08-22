@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Find all Gunicorn process IDs
+PIDS=$(pgrep -f 'gunicorn')
+
+# Check if any Gunicorn processes were found
+if [ -z "$PIDS" ]; then
+  echo "Gunicorn process not found."
+  exit 1
+fi
+
+# Send the HUP signal to all Gunicorn processes to gracefully reload workers
+for PID in $PIDS; do
+  kill -HUP "$PID"
+done
+
+echo "Gunicorn gracefully reloaded with no downtime."
